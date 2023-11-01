@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "stdlib.h": "c",
+        "math.h": "c",
+        "stdio.h": "c",
+        "array": "c",
+        "algorithm": "c",
+        "nonogram.h": "c"
+    }
+}
