@@ -1,6 +1,6 @@
 #include "nonogram.h"
 #include <stdlib.h>
-
+#include <stdio.h>
 // Function to create possible binary arrangements based on clues
 void createAxisPossibleArrangements(struct Axis *axis)
 {
@@ -53,15 +53,13 @@ void filterPossibilities(struct Axis *axis, int currentAxis)
     {
         if (axis->possibleArrangements[i] & currentAxis)
         {
+            //shifts all of the fitting arranegmets to the left (making them the first values)
             axis->possibleArrangements[newNumPossibleArrangements] = axis->possibleArrangements[i];
             newNumPossibleArrangements++;
         }
     }
-    if (newNumPossibleArrangements)
-    {
-        axis->possibleArrangements = (int *)realloc(axis->possibleArrangements, newNumPossibleArrangements * sizeof(int));
-        axis->numPossibleArrangements = newNumPossibleArrangements;
-    }
+    //the first 'newNumPossibleArrangements' have been changed
+    axis->numPossibleArrangements = newNumPossibleArrangements;
 }
 
 // Function for checking possibilities overlapping using bitwise AND
