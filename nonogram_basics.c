@@ -37,11 +37,11 @@ void genLineArrangements(struct LineArrangements *line){
 
 int binaryComparison(int value, int binarySeq, int mode) {
     if (mode) {
-        return ~value & binarySeq;
-    } else {
         return value & binarySeq;
+    } else {
+        return -~value & binarySeq;
     }
-}
+} 
 
 void filterLineArrangementsByBinarySeq(struct LineArrangements *line, int BinarySeq, int mode) {
     int newNumArrangements = 0;
@@ -54,10 +54,16 @@ void filterLineArrangementsByBinarySeq(struct LineArrangements *line, int Binary
     line->numArrangements = newNumArrangements;
 }
 
-int checkLineOverlap(struct LineArrangements *line){
-    int overlap = line->arrangements[0];
-    for (int arrangementIndex = 1; arrangementIndex < line->numArrangements; arrangementIndex++){
-        overlap = overlap & line->arrangements[arrangementIndex];
+int checkLineOverlap(struct LineArrangements *line, int mode){
+    int overlap;
+    if (mode){
+        overlap = line->arrangements[0];
+    } else{
+        overlap = -~line->arrangements[0];
     }
-    return overlap;
+    
+    for (int arrangementIndex = 1; arrangementIndex < line->numArrangements; arrangementIndex++){
+        overlap = binaryComparison(line->arrangements[arrangementIndex], overlap, mode);
+    }
+    return -~overlap;
 }

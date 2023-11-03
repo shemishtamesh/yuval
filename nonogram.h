@@ -18,6 +18,6 @@ int binaryComparison(int value, int binarySeq, int mode);
 // Function for filtering matching arrangements by using binaryComparison
 void filterLineArrangementsByBinarySeq(struct LineArrangements *line, int currentAxis, int mode);
 // Function for checking all of the arrangements overlap
-int checkLineOverlap(struct LineArrangements *line);
+int checkLineOverlap(struct LineArrangements *line, int mode);
 
 #endif

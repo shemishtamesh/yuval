@@ -32,8 +32,8 @@ class LineArrangements:
             self.line.arrangements[i] = 0
         nonolib.genLineArrangements(ctypes.byref(self.line))
 
-    def filter_line_arrangements_by_binary_seq(self, current_axis, mode):
-        nonolib.filterLineArrangementsByBinarySeq(ctypes.byref(self.line), current_axis, mode)
+    def filter_line_arrangements_by_binary_seq(self, binarySeq, mode):
+        nonolib.filterLineArrangementsByBinarySeq(ctypes.byref(self.line), binarySeq, mode)
         new_arrangements = (ctypes.c_int * self.line.numArrangements)()
         #save the first 'numPossibleArrangements' - were modified in nonolib.filterPossibilities
         for i in range(self.line.numArrangements):
@@ -41,7 +41,7 @@ class LineArrangements:
         self.line.arrangements = new_arrangements
 
 
-    def check_line_overlap(self):
-        return nonolib.checkLineOverlap(ctypes.byref(self.line))
+    def check_line_overlap(self, mode):
+        return nonolib.checkLineOverlap(ctypes.byref(self.line), mode)
 
 
