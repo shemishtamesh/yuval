@@ -41,6 +41,7 @@ int binaryComparison(int value, int binarySeq, int mode) {
     return mode ? value & binarySeq : value | binarySeq;
 }
 
+
 void filterLineArrangementsByBinarySeq(struct LineArrangements *line, int BinarySeq, int mode) {
     int newNumArrangements = 0;
     for (int arrangementIndex = 0; arrangementIndex < line->numArrangements; arrangementIndex++) {
