@@ -1,12 +1,17 @@
 from line import LineArrangements
 
+
+LINE_SIZE = 10
+
+
 def main():
-    one = LineArrangements([3,1,2], 10)
-    one.filter_line_arrangements_by_binary_seq(1023, 0)
+    one = LineArrangements([5], LINE_SIZE)
+    # one.filter_line_arrangements_by_binary_seq(1, 0)
+
+    # for i in range(one.line.numArrangements):
+    #     print(one.line.arrangements[i])
     one.filter_line_arrangements_by_binary_seq(1, 1)
-    # for i in range(one.axis.numPossibleArrangements):
-    #     print(one.axis.possibleArrangements[i])
-    overlap = one.check_line_overlap()
+    overlap = one.check_line_overlap(0)
     print(f"{overlap}")
 
 main()
